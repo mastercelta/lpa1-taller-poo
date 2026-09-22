@@ -36,11 +36,17 @@ class Asiento(Mueble):
         self._tiene_respaldo = tiene_respaldo
         self._material_tapizado = material_tapizado
     
-    # TODO: Implementar propiedades (getters) para los nuevos atributos
-    # @property
-    # def capacidad_personas(self) -> int:
-    #     """Getter para la capacidad de personas."""
-    #     return self._capacidad_personas
+    @property
+    def capacidad_personas(self) -> int:
+        return self._capacidad_personas
+
+    @property
+    def tiene_respaldo(self) -> bool:
+        return self._tiene_respaldo
+
+    @property
+    def material_tapizado(self) -> str:
+        return self._material_tapizado
     
     # TODO: Implementar setters con validaciones apropiadas
     # @capacidad_personas.setter
