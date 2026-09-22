@@ -73,18 +73,9 @@ class Mueble(ABC):
             raise ValueError("El precio base no puede ser negativo")
         self._precio_base = value
     
-    # TODO: Implementar método abstracto calcular_precio()
-    # Este método debe ser implementado por todas las clases hijas
-    # Usa el decorador @abstractmethod
-    # def calcular_precio(self) -> float:
-    #     """
-    #     Calcula el precio final del mueble.
-    #     Este método debe ser implementado por cada clase concreta.
-    #     
-    #     Returns:
-    #         float: Precio final calculado
-    #     """
-    #     pass
+    @abstractmethod
+    def calcular_precio(self) -> float:
+        pass
     
     # TODO: Implementar método abstracto obtener_descripcion()
     # Este método debe retornar una descripción detallada del mueble
