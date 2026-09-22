@@ -91,13 +91,11 @@ class Asiento(Mueble):
         Returns:
             str: Información detallada del asiento
         """
-        # TODO: Implementar retornando información del asiento
-        # info = f"Capacidad: {self.capacidad_personas} personas"
-        # info += f", Respaldo: {'Sí' if self.tiene_respaldo else 'No'}"
-        # if self.material_tapizado:
-        #     info += f", Tapizado: {self.material_tapizado}"
-        # return info
-        pass
+        info = f"Capacidad: {self.capacidad_personas} personas"
+        info += f", Respaldo: {'Sí' if self.tiene_respaldo else 'No'}"
+        if self.material_tapizado:
+            info += f", Tapizado: {self.material_tapizado}"
+        return info
     
     # TODO: Mantener el método calcular_precio como abstracto
     # Las clases concretas deben implementar su propio cálculo
