@@ -97,9 +97,11 @@ class Asiento(Mueble):
             info += f", Tapizado: {self.material_tapizado}"
         return info
     
-    # TODO: Mantener el método calcular_precio como abstracto
-    # Las clases concretas deben implementar su propio cálculo
-    
-    # TODO: Mantener el método obtener_descripcion como abstracto
-    # Cada tipo de asiento tendrá su propia descripción
+    @abstractmethod
+    def calcular_precio(self) -> float:
+        pass
+
+    @abstractmethod
+    def obtener_descripcion(self) -> str:
+        pass
 
