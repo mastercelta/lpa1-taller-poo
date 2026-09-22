@@ -33,14 +33,22 @@ class Mueble(ABC):
         self._color = color
         self._precio_base = precio_base
     
-    # TODO: Implementar las propiedades (getters) para cada atributo
-    # Usa el decorador @property para crear getters
-    # Ejemplo:
-    # @property
-    # def nombre(self) -> str:
-    #     """Getter para el nombre del mueble."""
-    #     return self._nombre
-    
+    @property
+    def nombre(self) -> str:
+        return self._nombre
+
+    @property
+    def material(self) -> str:
+        return self._material
+
+    @property
+    def color(self) -> str:
+        return self._color
+
+    @property
+    def precio_base(self) -> float:
+        return self._precio_base
+
     # TODO: Implementar los setters para cada atributo donde sea necesario
     # Usa el decorador @nombre.setter para crear setters
     # Incluye validaciones básicas (ej: precio no puede ser negativo)
