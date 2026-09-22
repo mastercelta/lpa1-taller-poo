@@ -4,7 +4,7 @@ Este taller está diseñado para introducir a los estudiantes en los conceptos d
 
 ## Estudiante
 
-Cuenta: [@tu_cuenta_github]
+Cuenta: [@mastercelta](https://github.com/mastercelta)
 
 ## Objetivos
 
@@ -175,7 +175,7 @@ python3 main.py
 
 ## Entregables
 
-El estudiante debe actualizar su repositio personal con:
+El estudiante debe actualizar su repositorio personal con:
 
 * Código fuente completo con todos los TODOs resueltos
 * Pruebas unitarias funcionando al 100%
