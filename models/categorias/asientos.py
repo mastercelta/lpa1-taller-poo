@@ -3,13 +3,11 @@ Clase abstracta para muebles de asiento.
 Esta clase agrupa las características comunes de sillas, sillones y sofás.
 """
 
-# TODO: Importar la clase padre Mueble
-# from ..mueble import Mueble
-
-# TODO: Importar ABC y abstractmethod si es necesario
+from abc import ABC, abstractmethod
+from ..mueble import Mueble
 
 
-class Asiento:
+class Asiento(Mueble):
     """
     Clase abstracta para todos los muebles donde las personas se sientan.
     
