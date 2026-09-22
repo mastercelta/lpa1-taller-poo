@@ -31,11 +31,10 @@ class Asiento(Mueble):
             material_tapizado: Material del tapizado (opcional)
             Otros argumentos heredados de Mueble
         """
-        # TODO: Llamar al constructor de la clase padre usando super()
-        
-        # TODO: Inicializar los atributos específicos de asiento
-        # Usar encapsulación con atributos privados
-        pass
+        super().__init__(nombre, material, color, precio_base)
+        self._capacidad_personas = capacidad_personas
+        self._tiene_respaldo = tiene_respaldo
+        self._material_tapizado = material_tapizado
     
     # TODO: Implementar propiedades (getters) para los nuevos atributos
     # @property
