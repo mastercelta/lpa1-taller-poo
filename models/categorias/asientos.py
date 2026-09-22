@@ -48,13 +48,19 @@ class Asiento(Mueble):
     def material_tapizado(self) -> str:
         return self._material_tapizado
     
-    # TODO: Implementar setters con validaciones apropiadas
-    # @capacidad_personas.setter
-    # def capacidad_personas(self, value: int) -> None:
-    #     """Setter para capacidad con validación."""
-    #     if value <= 0:
-    #         raise ValueError("La capacidad debe ser mayor a 0")
-    #     self._capacidad_personas = value
+    @capacidad_personas.setter
+    def capacidad_personas(self, value: int) -> None:
+        if value <= 0:
+            raise ValueError("La capacidad debe ser mayor a 0")
+        self._capacidad_personas = value
+
+    @tiene_respaldo.setter
+    def tiene_respaldo(self, value: bool) -> None:
+        self._tiene_respaldo = value
+
+    @material_tapizado.setter
+    def material_tapizado(self, value: str) -> None:
+        self._material_tapizado = value
     
     def calcular_factor_comodidad(self) -> float:
         """
