@@ -49,16 +49,29 @@ class Mueble(ABC):
     def precio_base(self) -> float:
         return self._precio_base
 
-    # TODO: Implementar los setters para cada atributo donde sea necesario
-    # Usa el decorador @nombre.setter para crear setters
-    # Incluye validaciones básicas (ej: precio no puede ser negativo)
-    # Ejemplo:
-    # @nombre.setter
-    # def nombre(self, value: str) -> None:
-    #     """Setter para el nombre con validación."""
-    #     if not value or not value.strip():
-    #         raise ValueError("El nombre no puede estar vacío")
-    #     self._nombre = value.strip()
+    @nombre.setter
+    def nombre(self, value: str) -> None:
+        if not value or not value.strip():
+            raise ValueError("El nombre no puede estar vacío")
+        self._nombre = value.strip()
+
+    @material.setter
+    def material(self, value: str) -> None:
+        if not value or not value.strip():
+            raise ValueError("El material no puede estar vacío")
+        self._material = value.strip()
+
+    @color.setter
+    def color(self, value: str) -> None:
+        if not value or not value.strip():
+            raise ValueError("El color no puede estar vacío")
+        self._color = value.strip()
+
+    @precio_base.setter
+    def precio_base(self, value: float) -> None:
+        if value < 0:
+            raise ValueError("El precio base no puede ser negativo")
+        self._precio_base = value
     
     # TODO: Implementar método abstracto calcular_precio()
     # Este método debe ser implementado por todas las clases hijas
