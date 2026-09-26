@@ -38,16 +38,17 @@ class SofaCama(Sofa, Cama):
         self._mecanismo_conversion = mecanismo_conversion
         self._modo_actual = "sofa"
     
-    # TODO: Implementar propiedades para los nuevos atributos
-    # @property
-    # def mecanismo_conversion(self) -> str:
-    #     """Getter para el mecanismo de conversión."""
-    #     return self._mecanismo_conversion
-    
-    # @property
-    # def modo_actual(self) -> str:
-    #     """Getter para el modo actual (sofa o cama)."""
-    #     return self._modo_actual
+    @property
+    def mecanismo_conversion(self) -> str:
+        return self._mecanismo_conversion
+
+    @property
+    def modo_actual(self) -> str:
+        return self._modo_actual
+
+    @property
+    def tamaño_cama(self) -> str:
+        return self._tamaño_cama
     
     def convertir_a_cama(self) -> str:
         """
