@@ -85,31 +85,21 @@ class SofaCama(Sofa, Cama):
         Returns:
             float: Precio final del sofá-cama
         """
-        # TODO: Implementar cálculo de precio combinado
-        # El sofá-cama es más caro que un sofá o cama individual
-        # 1. Comenzar con precio base
-        # precio = self.precio_base
-        
-        # 2. Aplicar factor de comodidad de asiento
-        # precio *= self.calcular_factor_comodidad()
-        
-        # 3. Agregar valor por funcionalidad dual
-        # precio *= 1.5  # 50% más caro por ser dual
-        
-        # 4. Agregar costo por mecanismo de conversión
-        # if self.mecanismo_conversion == "electrico":
-        #     precio += 200
-        # elif self.mecanismo_conversion == "hidraulico":
-        #     precio += 150
-        # else:  # manual/plegable
-        #     precio += 100
-        
-        # 5. Agregar costo si incluye colchón
-        # if self.incluye_colchon:
-        #     precio += 300
-        
-        # return round(precio, 2)
-        pass
+        precio = self.precio_base
+        precio *= self.calcular_factor_comodidad()
+        precio *= 1.5
+
+        if self.mecanismo_conversion == "electrico":
+            precio += 200
+        elif self.mecanismo_conversion == "hidraulico":
+            precio += 150
+        else:
+            precio += 100
+
+        if self.incluye_colchon:
+            precio += 300
+
+        return round(precio, 2)
     
     def obtener_descripcion(self) -> str:
         """
