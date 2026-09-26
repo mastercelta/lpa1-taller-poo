@@ -36,16 +36,21 @@ class Silla(Asiento):
         self._altura_regulable = altura_regulable
         self._tiene_ruedas = tiene_ruedas
     
-    # TODO: Implementar propiedades para los nuevos atributos
-    # @property
-    # def altura_regulable(self) -> bool:
-    #     """Getter para altura regulable."""
-    #     return self._altura_regulable
-    
-    # @altura_regulable.setter
-    # def altura_regulable(self, value: bool) -> None:
-    #     """Setter para altura regulable."""
-    #     self._altura_regulable = value
+    @property
+    def altura_regulable(self) -> bool:
+        return self._altura_regulable
+
+    @altura_regulable.setter
+    def altura_regulable(self, value: bool) -> None:
+        self._altura_regulable = value
+
+    @property
+    def tiene_ruedas(self) -> bool:
+        return self._tiene_ruedas
+
+    @tiene_ruedas.setter
+    def tiene_ruedas(self, value: bool) -> None:
+        self._tiene_ruedas = value
     
     def calcular_precio(self) -> float:
         """
