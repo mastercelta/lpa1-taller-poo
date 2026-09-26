@@ -94,9 +94,9 @@ class Silla(Asiento):
         Returns:
             str: Mensaje del resultado de la operación
         """
-        # TODO: Implementar lógica de regulación
-
-        pass
+        if not self.altura_regulable:
+            return f"{self.nombre} no tiene altura regulable"
+        return f"{self.nombre} ajustada a {nueva_altura}cm"
     
     def es_silla_oficina(self) -> bool:
         """
