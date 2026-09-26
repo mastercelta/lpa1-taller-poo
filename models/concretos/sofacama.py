@@ -32,20 +32,11 @@ class SofaCama(Sofa, Cama):
             mecanismo_conversion: Tipo de mecanismo de conversión (plegable, extensible, etc.)
             Otros argumentos se pasan a las clases padre
         """
-        # TODO: Inicializar usando las clases padre
-        # Nota: En herencia múltiple, solo se llama super().__init__ una vez
-        # Esto llama al primer padre en el MRO (Method Resolution Order)
-        # super().__init__(nombre, material, color, precio_base, capacidad_personas, True, material_tapizado)
-        
-        # TODO: Inicializar atributos específicos de cama
-        # Necesitamos configurar manualmente los atributos de Cama ya que solo se llama un __init__
-        # self._tamaño_cama = tamaño_cama
-        # self._incluye_colchon = incluye_colchon
-        
-        # TODO: Inicializar atributos únicos del sofá-cama
-        # self._mecanismo_conversion = mecanismo_conversion
-        # self._modo_actual = "sofa"  # Puede ser "sofa" o "cama"
-        pass
+        super().__init__(nombre, material, color, precio_base, capacidad_personas, True, material_tapizado)
+        self._tamaño_cama = tamaño_cama
+        self._incluye_colchon = incluye_colchon
+        self._mecanismo_conversion = mecanismo_conversion
+        self._modo_actual = "sofa"
     
     # TODO: Implementar propiedades para los nuevos atributos
     # @property
