@@ -105,7 +105,5 @@ class Silla(Asiento):
         Returns:
             bool: True si es silla de oficina
         """
-        # TODO: Una silla es de oficina si tiene ruedas Y altura regulable
-
-        pass
+        return self.tiene_ruedas and self.altura_regulable
 
