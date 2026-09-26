@@ -72,13 +72,11 @@ class SofaCama(Sofa, Cama):
         Returns:
             str: Mensaje del resultado de la conversión
         """
-        # TODO: Implementar lógica de conversión
-        # if self._modo_actual == "sofa":
-        #     return "El sofá-cama ya está en modo sofá"
-        
-        # self._modo_actual = "sofa"
-        # return f"Cama convertida a sofá usando mecanismo {self.mecanismo_conversion}"
-        pass
+        if self._modo_actual == "sofa":
+            return "El sofá-cama ya está en modo sofá"
+
+        self._modo_actual = "sofa"
+        return f"Cama convertida a sofá usando mecanismo {self.mecanismo_conversion}"
     
     def calcular_precio(self) -> float:
         """
