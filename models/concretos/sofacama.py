@@ -125,13 +125,11 @@ class SofaCama(Sofa, Cama):
         Returns:
             dict: Capacidades en ambos modos
         """
-        # TODO: Implementar capacidades
-        # capacidades = {
-        #     "como_sofa": self.capacidad_personas,
-        #     "como_cama": 2 if self.tamaño_cama in ["matrimonial", "queen", "king"] else 1
-        # }
-        # return capacidades
-        pass
+        capacidades = {
+            "como_sofa": self.capacidad_personas,
+            "como_cama": 2 if self.tamaño_cama in ["matrimonial", "queen", "king"] else 1
+        }
+        return capacidades
     
     # TODO: Implementar método para verificar compatibilidad de modo
     # def puede_usar_como_cama(self) -> bool:
