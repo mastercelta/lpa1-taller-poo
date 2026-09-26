@@ -108,16 +108,14 @@ class SofaCama(Sofa, Cama):
         Returns:
             str: Descripción completa del sofá-cama
         """
-        # TODO: Crear descripción combinada
-        # descripcion = f"Sofá-cama {self.nombre} fabricado en {self.material} color {self.color}."
-        # descripcion += f"\n{self.obtener_info_asiento()}"
-        # descripcion += f"\nTamaño de cama: {self.tamaño_cama}"
-        # descripcion += f"\nMecanismo de conversión: {self.mecanismo_conversion}"
-        # descripcion += f"\nColchón incluido: {'Sí' if self.incluye_colchon else 'No'}"
-        # descripcion += f"\nModo actual: {self.modo_actual}"
-        # descripcion += f"\nPrecio: ${self.calcular_precio():.2f}"
-        # return descripcion
-        pass
+        descripcion = f"Sofá-cama {self.nombre} fabricado en {self.material} color {self.color}."
+        descripcion += f"\n{self.obtener_info_asiento()}"
+        descripcion += f"\nTamaño de cama: {self.tamaño_cama}"
+        descripcion += f"\nMecanismo de conversión: {self.mecanismo_conversion}"
+        descripcion += f"\nColchón incluido: {'Sí' if self.incluye_colchon else 'No'}"
+        descripcion += f"\nModo actual: {self.modo_actual}"
+        descripcion += f"\nPrecio: ${self.calcular_precio():.2f}"
+        return descripcion
     
     def obtener_capacidad_total(self) -> dict:
         """
