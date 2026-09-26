@@ -142,7 +142,5 @@ class SofaCama(Sofa, Cama):
         Representación en cadena del sofá-cama.
         Sobrescribe el método heredado para mostrar información específica.
         """
-        # TODO: Implementar representación personalizada
-        # return f"Sofá-cama {self.nombre} (modo: {self.modo_actual})"
-        pass
+        return f"Sofá-cama {self.nombre} (modo: {self.modo_actual})"
 
