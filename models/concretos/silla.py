@@ -76,9 +76,12 @@ class Silla(Asiento):
         Returns:
             str: Descripción completa de la silla
         """
-        # TODO: Crear y retornar descripción detallada
-        
-        pass
+        descripcion = f"{self} - {self.obtener_info_asiento()}"
+        if self.altura_regulable:
+            descripcion += ", altura regulable"
+        if self.tiene_ruedas:
+            descripcion += ", con ruedas"
+        return descripcion
     
     def regular_altura(self, nueva_altura: int) -> str:
         """
