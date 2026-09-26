@@ -58,13 +58,11 @@ class SofaCama(Sofa, Cama):
         Returns:
             str: Mensaje del resultado de la conversión
         """
-        # TODO: Implementar lógica de conversión
-        # if self._modo_actual == "cama":
-        #     return "El sofá-cama ya está en modo cama"
-        
-        # self._modo_actual = "cama"
-        # return f"Sofá convertido a cama usando mecanismo {self.mecanismo_conversion}"
-        pass
+        if self._modo_actual == "cama":
+            return "El sofá-cama ya está en modo cama"
+
+        self._modo_actual = "cama"
+        return f"Sofá convertido a cama usando mecanismo {self.mecanismo_conversion}"
     
     def convertir_a_sofa(self) -> str:
         """
