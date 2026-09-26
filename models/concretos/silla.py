@@ -30,11 +30,11 @@ class Silla(Asiento):
             tiene_ruedas: Si la silla tiene ruedas
             Otros argumentos heredados de Asiento
         """
-        # TODO: Llamar al constructor padre con capacidad fija de 1 persona
-        
-        # TODO: Inicializar atributos específicos de la silla
-        
-        pass
+        super().__init__(nombre, material, color, precio_base,
+                          capacidad_personas=1, tiene_respaldo=tiene_respaldo,
+                          material_tapizado=material_tapizado)
+        self._altura_regulable = altura_regulable
+        self._tiene_ruedas = tiene_ruedas
     
     # TODO: Implementar propiedades para los nuevos atributos
     # @property
