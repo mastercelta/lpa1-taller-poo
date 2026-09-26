@@ -59,17 +59,15 @@ class Silla(Asiento):
         Returns:
             float: Precio final de la silla
         """
-        # TODO: Implementar cálculo de precio para silla
+        precio = self.precio_base
+        precio *= self.calcular_factor_comodidad()
 
-        # 1. Comenzar con el precio base
-        
-        # 2. Aplicar factor de comodidad heredado
-        
-        # 3. Agregar costos por características especiales
-        
-        # 4. Retornar precio redondeado a 2 decimales
+        if self.altura_regulable:
+            precio += 30.0
+        if self.tiene_ruedas:
+            precio += 20.0
 
-        pass
+        return round(precio, 2)
     
     def obtener_descripcion(self) -> str:
         """
