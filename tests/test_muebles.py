@@ -92,8 +92,8 @@ class TestSilla:
     
     def test_es_silla_oficina(self):
         """Prueba la lógica de identificación de silla de oficina."""
-        # TODO: Implementar test de identificación
-        pass
+        assert self.silla_oficina.es_silla_oficina() == True
+        assert self.silla_basica.es_silla_oficina() == False
     
     def test_regular_altura_silla_sin_mecanismo(self):
         """Prueba que las sillas sin altura regulable no pueden ajustarse."""
