@@ -32,11 +32,9 @@ class Comedor:
             mesa: Objeto Mesa que forma parte del comedor
             sillas: Lista de objetos Silla (opcional, se puede crear vacía)
         """
-        # TODO: Inicializar atributos
-        # self._nombre = nombre
-        # self._mesa = mesa
-        # self._sillas = sillas if sillas is not None else []
-        pass
+        self._nombre = nombre
+        self._mesa = mesa
+        self._sillas = sillas if sillas is not None else []
     
     # TODO: Implementar propiedades
     # @property
