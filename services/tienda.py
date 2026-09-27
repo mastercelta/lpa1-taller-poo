@@ -38,16 +38,13 @@ class TiendaMuebles:
         self._descuentos_activos: Dict[str, float] = {}
         pass
     
-    # TODO: Implementar propiedades
-    # @property
-    # def nombre(self) -> str:
-    #     """Getter para el nombre de la tienda."""
-    #     return self._nombre
-    
-    # @property
-    # def total_muebles(self) -> int:
-    #     """Retorna el total de muebles en inventario."""
-    #     return len(self._inventario)
+    @property
+    def nombre(self) -> str:
+        return self._nombre
+
+    @property
+    def total_muebles(self) -> int:
+        return len(self._inventario)
     
     def agregar_mueble(self, mueble: 'Mueble') -> str:
         """
