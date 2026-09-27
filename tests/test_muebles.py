@@ -320,8 +320,10 @@ class TestComedor:
     
     def test_descripcion_completa(self):
         """Prueba la generación de descripción completa."""
-        # TODO: Implementar test de descripción
-        pass
+        descripcion = self.comedor.obtener_descripcion_completa()
+        assert "Comedor Familiar" in descripcion
+        assert "MESA" in descripcion
+        assert "SILLAS" in descripcion
     
     def test_resumen_estadistico(self):
         """Prueba la generación de resumen estadístico."""
