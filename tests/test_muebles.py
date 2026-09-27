@@ -199,15 +199,15 @@ class TestSofaCama:
     
     def test_calculo_precio_dual(self):
         """Prueba el cálculo de precio considerando funcionalidad dual."""
-        # TODO: Implementar test de precio con herencia múltiple
+        precio = self.sofacama.calcular_precio()
 
         # El precio debe ser significativamente mayor que un sofá o cama individual
         # debido a la funcionalidad dual y mecanismo de conversión
 
         # Verificar que incluye sobrecosto por funcionalidad dual (50%)
         # y mecanismo de conversión (+100) y colchón (+300)
-
-        pass
+        assert precio == 2200.0
+        assert precio > self.sofacama.precio_base
     
     def test_capacidad_total(self):
         """Prueba las capacidades en ambos modos."""
