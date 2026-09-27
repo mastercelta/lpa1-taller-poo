@@ -10,9 +10,8 @@ from rich.prompt import Prompt, IntPrompt, Confirm
 from typing import List, Optional
 import time
 
-from ..services.tienda import TiendaMuebles
-from ..models.mueble import Mueble
-# TODO: Importar los servicios y modelos
+from services.tienda import TiendaMuebles
+from models.mueble import Mueble
 
 
 class MenuTienda:
