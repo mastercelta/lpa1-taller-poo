@@ -334,8 +334,7 @@ class TestComedor:
     
     def test_len_comedor(self):
         """Prueba el método __len__ del comedor."""
-        # TODO: Implementar test de longitud
-        pass
+        assert len(self.comedor) == 3
 
 
 class TestConceptosOOPGenerales:
