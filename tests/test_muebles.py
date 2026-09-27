@@ -356,8 +356,12 @@ class TestConceptosOOPGenerales:
     
     def test_encapsulacion_general(self):
         """Prueba que la encapsulación funciona correctamente."""
-        # TODO: Implementar test de encapsulación
-        pass
+        silla = Silla("Silla E", "Madera", "Café", 100.0, True)
+        assert hasattr(silla, "_nombre")
+        with pytest.raises(ValueError):
+            silla.nombre = ""
+        with pytest.raises(ValueError):
+            silla.precio_base = -50
     
     def test_herencia_jerarquia(self):
         """Prueba que la jerarquía de herencia funciona correctamente."""
