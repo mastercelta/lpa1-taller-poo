@@ -36,21 +36,17 @@ class Comedor:
         self._mesa = mesa
         self._sillas = sillas if sillas is not None else []
     
-    # TODO: Implementar propiedades
-    # @property
-    # def nombre(self) -> str:
-    #     """Getter para el nombre del comedor."""
-    #     return self._nombre
-    
-    # @property
-    # def mesa(self) -> 'Mesa':
-    #     """Getter para la mesa del comedor."""
-    #     return self._mesa
-    
-    # @property
-    # def sillas(self) -> List['Silla']:
-    #     """Getter para la lista de sillas."""
-    #     return self._sillas.copy()  # Retorna una copia para proteger la lista interna
+    @property
+    def nombre(self) -> str:
+        return self._nombre
+
+    @property
+    def mesa(self) -> 'Mesa':
+        return self._mesa
+
+    @property
+    def sillas(self) -> List['Silla']:
+        return self._sillas.copy()
     
     def agregar_silla(self, silla: 'Silla') -> str:
         """
