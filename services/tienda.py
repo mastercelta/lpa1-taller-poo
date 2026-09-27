@@ -277,13 +277,11 @@ class TiendaMuebles:
         Returns:
             Dict[str, int]: Diccionario con el conteo por tipo
         """
-        # TODO: Implementar conteo por tipos
-        # conteo = {}
-        # for mueble in self._inventario:
-        #     tipo = type(mueble).__name__
-        #     conteo[tipo] = conteo.get(tipo, 0) + 1
-        # return conteo
-        pass
+        conteo = {}
+        for mueble in self._inventario:
+            tipo = type(mueble).__name__
+            conteo[tipo] = conteo.get(tipo, 0) + 1
+        return conteo
     
     def generar_reporte_inventario(self) -> str:
         """
