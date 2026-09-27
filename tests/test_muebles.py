@@ -122,9 +122,9 @@ class TestSilla:
         """Prueba que la descripción contenga información relevante."""
 
         descripcion = self.silla_basica.obtener_descripcion()
-        # TODO: Implementar test de descripción
-        # Ej: assert "Silla Básica" in descripcion
-        pass
+        assert "Silla Básica" in descripcion
+        assert isinstance(descripcion, str)
+        assert len(descripcion) > 0
     
     def test_polimorfismo_herencia(self):
         """Prueba que la silla implementa correctamente los métodos abstractos."""
