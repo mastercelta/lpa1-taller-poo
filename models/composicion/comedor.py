@@ -111,24 +111,22 @@ class Comedor:
         Returns:
             str: Descripción detallada del comedor
         """
-        # TODO: Implementar descripción completa
-        # descripcion = f"=== COMEDOR {self.nombre.upper()} ===\n\n"
-        # descripcion += "MESA:\n"
-        # descripcion += self._mesa.obtener_descripcion() + "\n\n"
-        
-        # if self._sillas:
-        #     descripcion += f"SILLAS ({len(self._sillas)} unidades):\n"
-        #     for i, silla in enumerate(self._sillas, 1):
-        #         descripcion += f"{i}. {silla.obtener_descripcion()}\n"
-        # else:
-        #     descripcion += "SILLAS: Ninguna incluida\n"
-        
-        # descripcion += f"\n--- PRECIO TOTAL: ${self.calcular_precio_total():.2f} ---"
-        # if len(self._sillas) >= 4:
-        #     descripcion += "\n(Incluye 5% de descuento por set completo)"
-        
-        # return descripcion
-        pass
+        descripcion = f"=== COMEDOR {self.nombre.upper()} ===\n\n"
+        descripcion += "MESA:\n"
+        descripcion += self._mesa.obtener_descripcion() + "\n\n"
+
+        if self._sillas:
+            descripcion += f"SILLAS ({len(self._sillas)} unidades):\n"
+            for i, silla in enumerate(self._sillas, 1):
+                descripcion += f"{i}. {silla.obtener_descripcion()}\n"
+        else:
+            descripcion += "SILLAS: Ninguna incluida\n"
+
+        descripcion += f"\n--- PRECIO TOTAL: ${self.calcular_precio_total():.2f} ---"
+        if len(self._sillas) >= 4:
+            descripcion += "\n(Incluye 5% de descuento por set completo)"
+
+        return descripcion
     
     def _calcular_capacidad_maxima(self) -> int:
         """
