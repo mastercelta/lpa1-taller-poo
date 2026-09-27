@@ -154,9 +154,17 @@ class TestSofaCama:
     
     def setup_method(self):
         """Configuración que se ejecuta antes de cada test."""
-        # TODO: Crear instancia de prueba
-        # Ej: self.sofacama = SofaCama( ... )
-        pass
+        self.sofacama = SofaCama(
+            nombre="SofaCama Deluxe",
+            material="Tela",
+            color="Gris",
+            precio_base=1000.0,
+            capacidad_personas=3,
+            material_tapizado="tela",
+            tamaño_cama="matrimonial",
+            incluye_colchon=True,
+            mecanismo_conversion="plegable"
+        )
     
     def test_creacion_sofacama(self):
         """Prueba la creación correcta del sofá-cama."""
