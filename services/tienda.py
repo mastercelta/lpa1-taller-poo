@@ -177,22 +177,20 @@ class TiendaMuebles:
         Returns:
             float: Valor total de todos los muebles en inventario
         """
-        # TODO: Implementar cálculo de valor total
-        # valor_total = 0
-        # for mueble in self._inventario:
-        #     try:
-        #         valor_total += mueble.calcular_precio()
-        #     except Exception:
-        #         continue  # Saltar muebles con errores
-        
-        # for comedor in self._comedores:
-        #     try:
-        #         valor_total += comedor.calcular_precio_total()
-        #     except Exception:
-        #         continue
-        
-        # return round(valor_total, 2)
-        pass
+        valor_total = 0
+        for mueble in self._inventario:
+            try:
+                valor_total += mueble.calcular_precio()
+            except Exception:
+                continue
+
+        for comedor in self._comedores:
+            try:
+                valor_total += comedor.calcular_precio_total()
+            except Exception:
+                continue
+
+        return round(valor_total, 2)
     
     def aplicar_descuento(self, categoria: str, porcentaje: float) -> str:
         """
