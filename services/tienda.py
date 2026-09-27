@@ -118,21 +118,19 @@ class TiendaMuebles:
         Returns:
             List[Mueble]: Lista de muebles en el rango de precios
         """
-        # TODO: Implementar filtro por precio
-        # if precio_min < 0:
-        #     precio_min = 0
-        
-        # resultados = []
-        # for mueble in self._inventario:
-        #     try:
-        #         precio = mueble.calcular_precio()
-        #         if precio_min <= precio <= precio_max:
-        #             resultados.append(mueble)
-        #     except Exception:
-        #         continue  # Saltar muebles con errores de precio
-        
-        # return resultados
-        pass
+        if precio_min < 0:
+            precio_min = 0
+
+        resultados = []
+        for mueble in self._inventario:
+            try:
+                precio = mueble.calcular_precio()
+                if precio_min <= precio <= precio_max:
+                    resultados.append(mueble)
+            except Exception:
+                continue
+
+        return resultados
     
     def filtrar_por_material(self, material: str) -> List['Mueble']:
         """
