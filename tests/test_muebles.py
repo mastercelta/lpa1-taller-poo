@@ -27,6 +27,13 @@ class TestMuebleBase:
             mueble = Mueble("Test", "Madera", "Café", 100.0)
     
     # TODO: Agregar más tests base según sea necesario
+    def test_calcular_precio_es_abstracto(self):
+        """Verifica que calcular_precio esté declarado como método abstracto."""
+        assert Mueble.calcular_precio.__isabstractmethod__
+
+    def test_obtener_descripcion_es_abstracto(self):
+        """Verifica que obtener_descripcion esté declarado como método abstracto."""
+        assert Mueble.obtener_descripcion.__isabstractmethod__
 
 
 class TestSilla:
