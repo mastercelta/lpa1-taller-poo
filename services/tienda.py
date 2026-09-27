@@ -290,23 +290,21 @@ class TiendaMuebles:
         Returns:
             str: Reporte detallado del inventario
         """
-        # TODO: Implementar generación de reporte
-        # reporte = f"=== REPORTE DE INVENTARIO - {self.nombre} ===\n\n"
-        # 
-        # estadisticas = self.obtener_estadisticas()
-        # reporte += f"Total de muebles: {estadisticas['total_muebles']}\n"
-        # reporte += f"Total de comedores: {estadisticas['total_comedores']}\n"
-        # reporte += f"Valor total del inventario: ${estadisticas['valor_inventario']:.2f}\n\n"
-        # 
-        # reporte += "DISTRIBUCIÓN POR TIPOS:\n"
-        # for tipo, cantidad in estadisticas['tipos_muebles'].items():
-        #     reporte += f"- {tipo}: {cantidad} unidades\n"
-        # 
-        # if self._descuentos_activos:
-        #     reporte += "\nDESCUENTOS ACTIVOS:\n"
-        #     for categoria, descuento in self._descuentos_activos.items():
-        #         reporte += f"- {categoria}: {descuento * 100:.1f}%\n"
-        # 
-        # return reporte
-        pass
+        reporte = f"=== REPORTE DE INVENTARIO - {self.nombre} ===\n\n"
+
+        estadisticas = self.obtener_estadisticas()
+        reporte += f"Total de muebles: {estadisticas['total_muebles']}\n"
+        reporte += f"Total de comedores: {estadisticas['total_comedores']}\n"
+        reporte += f"Valor total del inventario: ${estadisticas['valor_inventario']:.2f}\n\n"
+
+        reporte += "DISTRIBUCIÓN POR TIPOS:\n"
+        for tipo, cantidad in estadisticas['tipos_muebles'].items():
+            reporte += f"- {tipo}: {cantidad} unidades\n"
+
+        if self._descuentos_activos:
+            reporte += "\nDESCUENTOS ACTIVOS:\n"
+            for categoria, descuento in self._descuentos_activos.items():
+                reporte += f"- {categoria}: {descuento * 100:.1f}%\n"
+
+        return reporte
 
