@@ -4,8 +4,12 @@ Estas pruebas validan el correcto funcionamiento de todos los conceptos OOP impl
 """
 
 import pytest
-# TODO: Importar las clases a testear
-# Ej: from models.mueble import Mueble
+from models.mueble import Mueble
+from models.categorias.asientos import Asiento
+from models.concretos.silla import Silla
+from models.concretos.mesa import Mesa
+from models.concretos.sofacama import SofaCama
+from models.composicion.comedor import Comedor
 
 
 class TestMuebleBase:
