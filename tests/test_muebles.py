@@ -296,8 +296,8 @@ class TestComedor:
     
     def test_calculo_precio_total(self):
         """Prueba el cálculo del precio total del comedor."""
-        # TODO: Implementar test de precio total
-        pass
+        precio_total = self.comedor.calcular_precio_total()
+        assert precio_total == 854.0
     
     def test_descuento_set_completo(self):
         """Prueba el descuento por set completo (4+ sillas)."""
