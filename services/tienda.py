@@ -95,19 +95,17 @@ class TiendaMuebles:
         Returns:
             List[Mueble]: Lista de muebles que coinciden con la búsqueda
         """
-        # TODO: Implementar búsqueda por nombre
-        # if not nombre or not nombre.strip():
-        #     return []
-        
-        # nombre_lower = nombre.lower().strip()
-        # resultados = []
-        
-        # for mueble in self._inventario:
-        #     if nombre_lower in mueble.nombre.lower():
-        #         resultados.append(mueble)
-        
-        # return resultados
-        pass
+        if not nombre or not nombre.strip():
+            return []
+
+        nombre_lower = nombre.lower().strip()
+        resultados = []
+
+        for mueble in self._inventario:
+            if nombre_lower in mueble.nombre.lower():
+                resultados.append(mueble)
+
+        return resultados
     
     def filtrar_por_precio(self, precio_min: float = 0, precio_max: float = float('inf')) -> List['Mueble']:
         """
