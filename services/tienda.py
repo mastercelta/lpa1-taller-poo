@@ -164,13 +164,11 @@ class TiendaMuebles:
         Returns:
             List[Mueble]: Lista de muebles del tipo especificado
         """
-        # TODO: Implementar filtro por tipo
-        # resultados = []
-        # for mueble in self._inventario:
-        #     if isinstance(mueble, tipo_clase):
-        #         resultados.append(mueble)
-        # return resultados
-        pass
+        resultados = []
+        for mueble in self._inventario:
+            if isinstance(mueble, tipo_clase):
+                resultados.append(mueble)
+        return resultados
     
     def calcular_valor_inventario(self) -> float:
         """
