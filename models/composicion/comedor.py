@@ -58,19 +58,15 @@ class Comedor:
         Returns:
             str: Mensaje de confirmación
         """
-        # TODO: Implementar lógica para agregar silla
-        # Validar que sea realmente una Silla
-        # if not isinstance(silla, Silla):
-        #     return "Error: Solo se pueden agregar objetos de tipo Silla"
-        
-        # Verificar capacidad máxima (por ejemplo, basada en el tamaño de la mesa)
-        # capacidad_maxima = self._calcular_capacidad_maxima()
-        # if len(self._sillas) >= capacidad_maxima:
-        #     return f"No se pueden agregar más sillas. Capacidad máxima: {capacidad_maxima}"
-        
-        # self._sillas.append(silla)
-        # return f"Silla {silla.nombre} agregada exitosamente al comedor"
-        pass
+        if not isinstance(silla, Silla):
+            return "Error: Solo se pueden agregar objetos de tipo Silla"
+
+        capacidad_maxima = self._calcular_capacidad_maxima()
+        if len(self._sillas) >= capacidad_maxima:
+            return f"No se pueden agregar más sillas. Capacidad máxima: {capacidad_maxima}"
+
+        self._sillas.append(silla)
+        return f"Silla {silla.nombre} agregada exitosamente al comedor"
     
     def quitar_silla(self, indice: int = -1) -> str:
         """
