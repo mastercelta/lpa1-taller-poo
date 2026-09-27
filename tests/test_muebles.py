@@ -344,8 +344,15 @@ class TestConceptosOOPGenerales:
     
     def test_polimorfismo_general(self):
         """Prueba que diferentes tipos de muebles implementan polimorfismo correctamente."""
-        # TODO: Implementar test de polimorfismo general
-        pass
+        muebles = [
+            Silla("Silla P", "Madera", "Café", 100.0, True),
+            Mesa("Mesa P", "Madera", "Roble", 300.0, "rectangular", 4),
+        ]
+        for mueble in muebles:
+            assert isinstance(mueble, Mueble)
+            precio = mueble.calcular_precio()
+            assert isinstance(precio, (int, float))
+            assert precio > 0
     
     def test_encapsulacion_general(self):
         """Prueba que la encapsulación funciona correctamente."""
