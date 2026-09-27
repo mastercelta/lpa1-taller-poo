@@ -327,8 +327,10 @@ class TestComedor:
     
     def test_resumen_estadistico(self):
         """Prueba la generación de resumen estadístico."""
-        # TODO: Implementar test de resumen
-        pass
+        resumen = self.comedor.obtener_resumen()
+        assert resumen["nombre"] == "Comedor Familiar"
+        assert resumen["total_muebles"] == 3
+        assert resumen["capacidad_personas"] == 2
     
     def test_len_comedor(self):
         """Prueba el método __len__ del comedor."""
