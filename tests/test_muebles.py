@@ -97,8 +97,8 @@ class TestSilla:
     
     def test_regular_altura_silla_sin_mecanismo(self):
         """Prueba que las sillas sin altura regulable no pueden ajustarse."""
-        # TODO: Implementar test de regulación
-        pass
+        resultado = self.silla_basica.regular_altura(50)
+        assert "no tiene altura regulable" in resultado.lower()
     
     def test_regular_altura_silla_con_mecanismo(self):
         """Prueba la regulación de altura en sillas que lo permiten."""
