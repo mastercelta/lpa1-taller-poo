@@ -142,19 +142,17 @@ class TiendaMuebles:
         Returns:
             List[Mueble]: Lista de muebles del material especificado
         """
-        # TODO: Implementar filtro por material
-        # if not material or not material.strip():
-        #     return []
-        
-        # material_lower = material.lower().strip()
-        # resultados = []
-        
-        # for mueble in self._inventario:
-        #     if mueble.material.lower() == material_lower:
-        #         resultados.append(mueble)
-        
-        # return resultados
-        pass
+        if not material or not material.strip():
+            return []
+
+        material_lower = material.lower().strip()
+        resultados = []
+
+        for mueble in self._inventario:
+            if mueble.material.lower() == material_lower:
+                resultados.append(mueble)
+
+        return resultados
     
     def obtener_muebles_por_tipo(self, tipo_clase: type) -> List['Mueble']:
         """
