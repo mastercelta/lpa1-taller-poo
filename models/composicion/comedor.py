@@ -78,16 +78,14 @@ class Comedor:
         Returns:
             str: Mensaje de confirmación
         """
-        # TODO: Implementar lógica para quitar silla
-        # if not self._sillas:
-        #     return "No hay sillas para quitar"
-        
-        # try:
-        #     silla_removida = self._sillas.pop(indice)
-        #     return f"Silla {silla_removida.nombre} removida del comedor"
-        # except IndexError:
-        #     return "Índice de silla inválido"
-        pass
+        if not self._sillas:
+            return "No hay sillas para quitar"
+
+        try:
+            silla_removida = self._sillas.pop(indice)
+            return f"Silla {silla_removida.nombre} removida del comedor"
+        except IndexError:
+            return "Índice de silla inválido"
     
     def calcular_precio_total(self) -> float:
         """
