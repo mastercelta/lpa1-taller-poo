@@ -365,8 +365,9 @@ class TestConceptosOOPGenerales:
     
     def test_herencia_jerarquia(self):
         """Prueba que la jerarquía de herencia funciona correctamente."""
-        # TODO: Implementar test de jerarquía
-        pass
+        silla = Silla("Silla H", "Madera", "Café", 100.0, True)
+        assert isinstance(silla, Asiento)
+        assert isinstance(silla, Mueble)
 
 
 # Agregar fixture para datos de prueba si es necesario
