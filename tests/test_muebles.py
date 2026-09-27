@@ -65,9 +65,12 @@ class TestSilla:
     
     def test_creacion_silla_basica(self):
         """Prueba la creación correcta de una silla básica."""
-        # TODO: Implementar test de creación
-        # Ej: assert self.silla_basica.nombre == "Silla Básica"
-        pass
+        assert self.silla_basica.nombre == "Silla Básica"
+        assert self.silla_basica.material == "Madera"
+        assert self.silla_basica.color == "Café"
+        assert self.silla_basica.precio_base == 150.0
+        assert self.silla_basica.tiene_respaldo == True
+        assert self.silla_basica.capacidad_personas == 1
     
     def test_calculo_precio_silla_basica(self):
         """Prueba el cálculo de precio para silla básica."""
