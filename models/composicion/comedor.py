@@ -148,18 +148,16 @@ class Comedor:
         Returns:
             dict: Diccionario con información resumida
         """
-        # TODO: Implementar resumen estadístico
-        # resumen = {
-        #     "nombre": self.nombre,
-        #     "total_muebles": 1 + len(self._sillas),  # mesa + sillas
-        #     "precio_mesa": self._mesa.calcular_precio(),
-        #     "precio_sillas": sum(silla.calcular_precio() for silla in self._sillas),
-        #     "precio_total": self.calcular_precio_total(),
-        #     "capacidad_personas": len(self._sillas),
-        #     "materiales_utilizados": self._obtener_materiales_unicos()
-        # }
-        # return resumen
-        pass
+        resumen = {
+            "nombre": self.nombre,
+            "total_muebles": 1 + len(self._sillas),
+            "precio_mesa": self._mesa.calcular_precio(),
+            "precio_sillas": sum(silla.calcular_precio() for silla in self._sillas),
+            "precio_total": self.calcular_precio_total(),
+            "capacidad_personas": len(self._sillas),
+            "materiales_utilizados": self._obtener_materiales_unicos()
+        }
+        return resumen
     
     def _obtener_materiales_unicos(self) -> list:
         """
