@@ -284,8 +284,9 @@ class TestComedor:
     
     def test_agregar_objeto_invalido(self):
         """Prueba que no se pueden agregar objetos que no sean sillas."""
-        # TODO: Implementar test de validación de tipo
-        pass
+        resultado = self.comedor.agregar_silla(self.mesa)
+        assert "error" in resultado.lower()
+        assert len(self.comedor.sillas) == 2
     
     def test_quitar_silla(self):
         """Prueba quitar sillas del comedor."""
