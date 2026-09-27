@@ -182,7 +182,5 @@ class Comedor:
     
     def __len__(self) -> int:
         """Retorna el número total de muebles en el comedor."""
-        # TODO: Implementar longitud
-        # return 1 + len(self._sillas)  # mesa + sillas
-        pass
+        return 1 + len(self._sillas)
 
