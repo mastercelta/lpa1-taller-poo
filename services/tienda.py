@@ -79,13 +79,11 @@ class TiendaMuebles:
         Returns:
             str: Mensaje de confirmación
         """
-        # TODO: Implementar lógica para agregar comedor
-        # if not isinstance(comedor, Comedor):
-        #     return "Error: Solo se pueden agregar objetos de tipo Comedor"
-        
-        # self._comedores.append(comedor)
-        # return f"Comedor {comedor.nombre} agregado exitosamente"
-        pass
+        if not isinstance(comedor, Comedor):
+            return "Error: Solo se pueden agregar objetos de tipo Comedor"
+
+        self._comedores.append(comedor)
+        return f"Comedor {comedor.nombre} agregado exitosamente"
     
     def buscar_muebles_por_nombre(self, nombre: str) -> List['Mueble']:
         """
