@@ -302,15 +302,21 @@ class TestComedor:
     def test_descuento_set_completo(self):
         """Prueba el descuento por set completo (4+ sillas)."""
 
-        # TODO: Implementar test de descuento
-
-        # Agregar más sillas para alcanzar el descuento
+    def test_descuento_set_completo(self):
+        """Prueba el descuento por set completo (4+ sillas)."""
 
         # Calcular precio sin descuento
+        precio_sin_descuento = self.comedor.calcular_precio_total()
+
+        # Agregar más sillas para alcanzar el descuento
+        self.comedor.agregar_silla(Silla("Silla 3", "Madera", "Roble", 120.0, True))
+        self.comedor.agregar_silla(Silla("Silla 4", "Madera", "Roble", 120.0, True))
 
         # Aplicar descuento del 5%
+        precio_con_descuento = self.comedor.calcular_precio_total()
+        precio_sin_aplicar = precio_sin_descuento + 2 * 132.0
 
-        pass
+        assert precio_con_descuento == round(precio_sin_aplicar * 0.95, 2)
     
     def test_descripcion_completa(self):
         """Prueba la generación de descripción completa."""
