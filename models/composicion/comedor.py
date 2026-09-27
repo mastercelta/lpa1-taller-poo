@@ -136,18 +136,10 @@ class Comedor:
         Returns:
             int: Número máximo de sillas que pueden acomodarse
         """
-        # TODO: Implementar cálculo de capacidad
-        # Este cálculo depende del tamaño de la mesa
-        # Asumir que la mesa tiene un atributo como 'capacidad_personas' o 'forma'
-        
-        # Ejemplo de lógica:
-        # if hasattr(self._mesa, 'capacidad_personas'):
-        #     return self._mesa.capacidad_personas
-        # else:
-        #     # Capacidad por defecto basada en el tamaño
-        #     return 6  # Valor por defecto
-        
-        return 6  # Valor temporal
+        if hasattr(self._mesa, 'capacidad_personas'):
+            return self._mesa.capacidad_personas
+        else:
+            return 6
     
     def obtener_resumen(self) -> dict:
         """
