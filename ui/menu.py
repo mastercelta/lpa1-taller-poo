@@ -2,8 +2,11 @@
 Interfaz de usuario usando Rich para crear un menú interactivo y atractivo.
 """
 
-# TODO: Importar las librerías necesarias
 from rich.console import Console
+from rich.table import Table
+from rich.panel import Panel
+from rich.text import Text
+from rich.prompt import Prompt, IntPrompt, Confirm
 from typing import List, Optional
 import time
 
