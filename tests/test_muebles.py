@@ -381,7 +381,6 @@ def muebles_de_prueba():
     }
 
 
-# TODO: Agregar tests de integración 
 class TestIntegracion:
     """
     Pruebas de integración que validan el funcionamiento conjunto de múltiples clases.
@@ -393,15 +392,23 @@ class TestIntegracion:
         from services.tienda import TiendaMuebles
         tienda = TiendaMuebles("Tienda Test")
 
-        # TODO: Implementar test de integración completo
-
         # Crear muebles variados
+        silla = Silla("Silla Integracion", "Madera", "Café", 100.0, True)
+        mesa = Mesa("Mesa Integracion", "Madera", "Roble", 300.0, "rectangular", 4)
+        sofacama = SofaCama("SofaCama Integracion", "Tela", "Gris", 800.0)
 
         # Agregar a la tienda
+        tienda.agregar_mueble(silla)
+        tienda.agregar_mueble(mesa)
+        tienda.agregar_mueble(sofacama)
 
         # Verificar búsquedas
+        assert tienda.total_muebles == 3
+        resultados = tienda.buscar_muebles_por_nombre("Integracion")
+        assert len(resultados) == 3
 
-        pass
+        estadisticas = tienda.obtener_estadisticas()
+        assert estadisticas["total_muebles"] == 3
 
 
 if __name__ == "__main__":
