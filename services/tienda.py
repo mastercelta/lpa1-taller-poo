@@ -259,17 +259,15 @@ class TiendaMuebles:
         Returns:
             Dict: Diccionario con estadísticas de la tienda
         """
-        # TODO: Implementar cálculo de estadísticas
-        # estadisticas = {
-        #     "total_muebles": len(self._inventario),
-        #     "total_comedores": len(self._comedores),
-        #     "valor_inventario": self.calcular_valor_inventario(),
-        #     "ventas_realizadas": len(self._ventas_realizadas),
-        #     "tipos_muebles": self._contar_tipos_muebles(),
-        #     "descuentos_activos": len(self._descuentos_activos)
-        # }
-        # return estadisticas
-        pass
+        estadisticas = {
+            "total_muebles": len(self._inventario),
+            "total_comedores": len(self._comedores),
+            "valor_inventario": self.calcular_valor_inventario(),
+            "ventas_realizadas": len(self._ventas_realizadas),
+            "tipos_muebles": self._contar_tipos_muebles(),
+            "descuentos_activos": len(self._descuentos_activos)
+        }
+        return estadisticas
     
     def _contar_tipos_muebles(self) -> Dict[str, int]:
         """
