@@ -85,8 +85,10 @@ class TestSilla:
     
     def test_calculo_precio_silla_oficina(self):
         """Prueba el cálculo de precio para silla de oficina con todas las características."""
-        # TODO: Implementar test de cálculo de precio complejo
-        pass
+        precio = self.silla_oficina.calcular_precio()
+        # Precio base 300.0 * factor comodidad 1.3 (respaldo+cuero) = 390.0
+        # + 30 (altura regulable) + 20 (ruedas) = 440.0
+        assert precio == 440.0
     
     def test_es_silla_oficina(self):
         """Prueba la lógica de identificación de silla de oficina."""
