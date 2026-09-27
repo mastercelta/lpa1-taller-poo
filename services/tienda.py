@@ -222,39 +222,35 @@ class TiendaMuebles:
         Returns:
             Dict: Información de la venta realizada
         """
-        # TODO: Implementar lógica de venta
-        # if mueble not in self._inventario:
-        #     return {"error": "El mueble no está disponible en inventario"}
-        
-        # try:
-        #     precio_original = mueble.calcular_precio()
-        #     descuento_aplicado = 0
-        #     
-        #     # Verificar si hay descuentos aplicables
-        #     tipo_mueble = type(mueble).__name__.lower()
-        #     if tipo_mueble in self._descuentos_activos:
-        #         descuento_aplicado = self._descuentos_activos[tipo_mueble]
-        #     
-        #     precio_final = precio_original * (1 - descuento_aplicado)
-        #     
-        #     # Registrar la venta
-        #     venta = {
-        #         "mueble": mueble.nombre,
-        #         "cliente": cliente,
-        #         "precio_original": precio_original,
-        #         "descuento": descuento_aplicado * 100,
-        #         "precio_final": round(precio_final, 2),
-        #         "fecha": "fecha_actual"  # Aquí podrías usar datetime
-        #     }
-        #     
-        #     self._ventas_realizadas.append(venta)
-        #     self._inventario.remove(mueble)
-        #     
-        #     return venta
-        # 
-        # except Exception as e:
-        #     return {"error": f"Error al procesar la venta: {str(e)}"}
-        pass
+        if mueble not in self._inventario:
+            return {"error": "El mueble no está disponible en inventario"}
+
+        try:
+            precio_original = mueble.calcular_precio()
+            descuento_aplicado = 0
+
+            tipo_mueble = type(mueble).__name__.lower()
+            if tipo_mueble in self._descuentos_activos:
+                descuento_aplicado = self._descuentos_activos[tipo_mueble]
+
+            precio_final = precio_original * (1 - descuento_aplicado)
+
+            venta = {
+                "mueble": mueble.nombre,
+                "cliente": cliente,
+                "precio_original": precio_original,
+                "descuento": descuento_aplicado * 100,
+                "precio_final": round(precio_final, 2),
+                "fecha": "fecha_actual"
+            }
+
+            self._ventas_realizadas.append(venta)
+            self._inventario.remove(mueble)
+
+            return venta
+
+        except Exception as e:
+            return {"error": f"Error al procesar la venta: {str(e)}"}
     
     def obtener_estadisticas(self) -> Dict:
         """
