@@ -102,8 +102,9 @@ class TestSilla:
     
     def test_regular_altura_silla_con_mecanismo(self):
         """Prueba la regulación de altura en sillas que lo permiten."""
-        # TODO: Implementar test de regulación válida
-        pass
+        resultado = self.silla_oficina.regular_altura(45)
+        assert "ajustada" in resultado.lower()
+        assert "45" in resultado
     
     def test_validaciones_setter(self):
         """Prueba las validaciones en los setters."""
