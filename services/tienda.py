@@ -203,15 +203,13 @@ class TiendaMuebles:
         Returns:
             str: Mensaje de confirmación
         """
-        # TODO: Implementar sistema de descuentos
-        # if not 0 <= porcentaje <= 100:
-        #     return "Error: El porcentaje debe estar entre 0 y 100"
-        
-        # categoria_lower = categoria.lower().strip()
-        # self._descuentos_activos[categoria_lower] = porcentaje / 100
-        
-        # return f"Descuento del {porcentaje}% aplicado a la categoría '{categoria}'"
-        pass
+        if not 0 <= porcentaje <= 100:
+            return "Error: El porcentaje debe estar entre 0 y 100"
+
+        categoria_lower = categoria.lower().strip()
+        self._descuentos_activos[categoria_lower] = porcentaje / 100
+
+        return f"Descuento del {porcentaje}% aplicado a la categoría '{categoria}'"
     
     def realizar_venta(self, mueble: 'Mueble', cliente: str = "Cliente Anónimo") -> Dict:
         """
