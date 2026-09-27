@@ -167,16 +167,14 @@ class Comedor:
         Returns:
             list: Lista de materiales únicos
         """
-        # TODO: Implementar obtención de materiales
-        # materiales = {self._mesa.material}  # Usar set para evitar duplicados
-        # 
-        # for silla in self._sillas:
-        #     materiales.add(silla.material)
-        #     if hasattr(silla, 'material_tapizado') and silla.material_tapizado:
-        #         materiales.add(silla.material_tapizado)
-        # 
-        # return list(materiales)
-        pass
+        materiales = {self._mesa.material}
+
+        for silla in self._sillas:
+            materiales.add(silla.material)
+            if hasattr(silla, 'material_tapizado') and silla.material_tapizado:
+                materiales.add(silla.material_tapizado)
+
+        return list(materiales)
     
     def __str__(self) -> str:
         """Representación en cadena del comedor."""
