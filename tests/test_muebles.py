@@ -290,8 +290,9 @@ class TestComedor:
     
     def test_quitar_silla(self):
         """Prueba quitar sillas del comedor."""
-        # TODO: Implementar test de remoción
-        pass
+        resultado = self.comedor.quitar_silla(0)
+        assert "removida" in resultado.lower()
+        assert len(self.comedor.sillas) == 1
     
     def test_calculo_precio_total(self):
         """Prueba el cálculo del precio total del comedor."""
