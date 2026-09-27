@@ -3,10 +3,9 @@ Clase Comedor que implementa composición.
 Un comedor está compuesto por una mesa y varias sillas.
 """
 
-# TODO: Importar las clases necesarias
-# from ..concretos.mesa import Mesa
-# from ..concretos.silla import Silla
-# from typing import List
+from ..concretos.mesa import Mesa
+from ..concretos.silla import Silla
+from typing import List
 
 
 class Comedor:
