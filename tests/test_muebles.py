@@ -213,8 +213,8 @@ class TestSofaCama:
         """Prueba las capacidades en ambos modos."""
 
         capacidades = self.sofacama.obtener_capacidad_total()
-        # TODO: Implementar test de capacidades
-        pass
+        assert capacidades["como_sofa"] == 3
+        assert capacidades["como_cama"] == 2
     
     def test_herencia_multiple_mro(self):
         """Prueba que la herencia múltiple funciona correctamente."""
