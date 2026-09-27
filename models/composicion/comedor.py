@@ -178,9 +178,7 @@ class Comedor:
     
     def __str__(self) -> str:
         """Representación en cadena del comedor."""
-        # TODO: Implementar representación
-        # return f"Comedor {self.nombre}: Mesa + {len(self._sillas)} sillas"
-        pass
+        return f"Comedor {self.nombre}: Mesa + {len(self._sillas)} sillas"
     
     def __len__(self) -> int:
         """Retorna el número total de muebles en el comedor."""
