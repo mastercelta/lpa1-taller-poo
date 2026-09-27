@@ -56,22 +56,18 @@ class TiendaMuebles:
         Returns:
             str: Mensaje de confirmación
         """
-        # TODO: Implementar lógica para agregar mueble
-        # Validar que sea un mueble válido
-        # if not isinstance(mueble, Mueble):
-        #     return "Error: Solo se pueden agregar objetos de tipo Mueble"
-        
-        # Verificar que no sea None y tenga precio válido
-        # try:
-        #     precio = mueble.calcular_precio()
-        #     if precio <= 0:
-        #         return "Error: El mueble debe tener un precio válido mayor a 0"
-        # except Exception as e:
-        #     return f"Error al calcular precio del mueble: {str(e)}"
-        
-        # self._inventario.append(mueble)
-        # return f"Mueble {mueble.nombre} agregado exitosamente al inventario"
-        pass
+        if not isinstance(mueble, Mueble):
+            return "Error: Solo se pueden agregar objetos de tipo Mueble"
+
+        try:
+            precio = mueble.calcular_precio()
+            if precio <= 0:
+                return "Error: El mueble debe tener un precio válido mayor a 0"
+        except Exception as e:
+            return f"Error al calcular precio del mueble: {str(e)}"
+
+        self._inventario.append(mueble)
+        return f"Mueble {mueble.nombre} agregado exitosamente al inventario"
     
     def agregar_comedor(self, comedor: 'Comedor') -> str:
         """
