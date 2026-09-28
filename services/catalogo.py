@@ -20,3 +20,27 @@ class Catalogo:
 
         nombre_lower = nombre.lower().strip()
         return [m for m in self._muebles if nombre_lower in m.nombre.lower()]
+
+    def filtrar_por_precio(self, precio_min: float, precio_max: float) -> List[Mueble]:
+        if precio_min < 0:
+            precio_min = 0
+
+        resultados = []
+        for mueble in self._muebles:
+            try:
+                if precio_min <= mueble.calcular_precio() <= precio_max:
+                    resultados.append(mueble)
+            except Exception:
+                continue
+
+        return resultados
+
+    def filtrar_por_material(self, material: str) -> List[Mueble]:
+        if not material or not material.strip():
+            return []
+
+        material_lower = material.lower().strip()
+        return [m for m in self._muebles if m.material.lower() == material_lower]
+
+    def filtrar_por_tipo(self, tipo_clase: type) -> List[Mueble]:
+        return [m for m in self._muebles if isinstance(m, tipo_clase)]
