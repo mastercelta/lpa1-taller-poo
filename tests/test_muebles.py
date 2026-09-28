@@ -26,7 +26,6 @@ class TestMuebleBase:
         with pytest.raises(TypeError):
             mueble = Mueble("Test", "Madera", "Café", 100.0)
     
-    # TODO: Agregar más tests base según sea necesario
     def test_calcular_precio_es_abstracto(self):
         """Verifica que calcular_precio esté declarado como método abstracto."""
         assert Mueble.calcular_precio.__isabstractmethod__
@@ -274,7 +273,6 @@ class TestComedor:
     def test_agregar_silla(self):
         """Prueba agregar sillas al comedor."""
 
-        # TODO: Implementar test de agregación
         silla_nueva = Silla("Silla Nueva", "Madera", "Roble", 120.0, True)
 
         resultado = self.comedor.agregar_silla(silla_nueva)
@@ -321,7 +319,7 @@ class TestComedor:
     def test_descripcion_completa(self):
         """Prueba la generación de descripción completa."""
         descripcion = self.comedor.obtener_descripcion_completa()
-        assert "Comedor Familiar" in descripcion
+        assert "COMEDOR FAMILIAR" in descripcion
         assert "MESA" in descripcion
         assert "SILLAS" in descripcion
     
