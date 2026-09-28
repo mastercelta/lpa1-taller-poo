@@ -4,8 +4,12 @@ Estas pruebas validan el correcto funcionamiento de todos los conceptos OOP impl
 """
 
 import pytest
-# TODO: Importar las clases a testear
-# Ej: from models.mueble import Mueble
+from models.mueble import Mueble
+from models.categorias.asientos import Asiento
+from models.concretos.silla import Silla
+from models.concretos.mesa import Mesa
+from models.concretos.sofacama import SofaCama
+from models.composicion.comedor import Comedor
 
 
 class TestMuebleBase:
@@ -22,7 +26,13 @@ class TestMuebleBase:
         with pytest.raises(TypeError):
             mueble = Mueble("Test", "Madera", "Café", 100.0)
     
-    # TODO: Agregar más tests base según sea necesario
+    def test_calcular_precio_es_abstracto(self):
+        """Verifica que calcular_precio esté declarado como método abstracto."""
+        assert Mueble.calcular_precio.__isabstractmethod__
+
+    def test_obtener_descripcion_es_abstracto(self):
+        """Verifica que obtener_descripcion esté declarado como método abstracto."""
+        assert Mueble.obtener_descripcion.__isabstractmethod__
 
 
 class TestSilla:
@@ -54,9 +64,12 @@ class TestSilla:
     
     def test_creacion_silla_basica(self):
         """Prueba la creación correcta de una silla básica."""
-        # TODO: Implementar test de creación
-        # Ej: assert self.silla_basica.nombre == "Silla Básica"
-        pass
+        assert self.silla_basica.nombre == "Silla Básica"
+        assert self.silla_basica.material == "Madera"
+        assert self.silla_basica.color == "Café"
+        assert self.silla_basica.precio_base == 150.0
+        assert self.silla_basica.tiene_respaldo == True
+        assert self.silla_basica.capacidad_personas == 1
     
     def test_calculo_precio_silla_basica(self):
         """Prueba el cálculo de precio para silla básica."""
@@ -71,23 +84,26 @@ class TestSilla:
     
     def test_calculo_precio_silla_oficina(self):
         """Prueba el cálculo de precio para silla de oficina con todas las características."""
-        # TODO: Implementar test de cálculo de precio complejo
-        pass
+        precio = self.silla_oficina.calcular_precio()
+        # Precio base 300.0 * factor comodidad 1.3 (respaldo+cuero) = 390.0
+        # + 30 (altura regulable) + 20 (ruedas) = 440.0
+        assert precio == 440.0
     
     def test_es_silla_oficina(self):
         """Prueba la lógica de identificación de silla de oficina."""
-        # TODO: Implementar test de identificación
-        pass
+        assert self.silla_oficina.es_silla_oficina() == True
+        assert self.silla_basica.es_silla_oficina() == False
     
     def test_regular_altura_silla_sin_mecanismo(self):
         """Prueba que las sillas sin altura regulable no pueden ajustarse."""
-        # TODO: Implementar test de regulación
-        pass
+        resultado = self.silla_basica.regular_altura(50)
+        assert "no tiene altura regulable" in resultado.lower()
     
     def test_regular_altura_silla_con_mecanismo(self):
         """Prueba la regulación de altura en sillas que lo permiten."""
-        # TODO: Implementar test de regulación válida
-        pass
+        resultado = self.silla_oficina.regular_altura(45)
+        assert "ajustada" in resultado.lower()
+        assert "45" in resultado
     
     def test_validaciones_setter(self):
         """Prueba las validaciones en los setters."""
@@ -105,9 +121,9 @@ class TestSilla:
         """Prueba que la descripción contenga información relevante."""
 
         descripcion = self.silla_basica.obtener_descripcion()
-        # TODO: Implementar test de descripción
-        # Ej: assert "Silla Básica" in descripcion
-        pass
+        assert "Silla Básica" in descripcion
+        assert isinstance(descripcion, str)
+        assert len(descripcion) > 0
     
     def test_polimorfismo_herencia(self):
         """Prueba que la silla implementa correctamente los métodos abstractos."""
@@ -137,9 +153,17 @@ class TestSofaCama:
     
     def setup_method(self):
         """Configuración que se ejecuta antes de cada test."""
-        # TODO: Crear instancia de prueba
-        # Ej: self.sofacama = SofaCama( ... )
-        pass
+        self.sofacama = SofaCama(
+            nombre="SofaCama Deluxe",
+            material="Tela",
+            color="Gris",
+            precio_base=1000.0,
+            capacidad_personas=3,
+            material_tapizado="tela",
+            tamaño_cama="matrimonial",
+            incluye_colchon=True,
+            mecanismo_conversion="plegable"
+        )
     
     def test_creacion_sofacama(self):
         """Prueba la creación correcta del sofá-cama."""
@@ -174,22 +198,22 @@ class TestSofaCama:
     
     def test_calculo_precio_dual(self):
         """Prueba el cálculo de precio considerando funcionalidad dual."""
-        # TODO: Implementar test de precio con herencia múltiple
+        precio = self.sofacama.calcular_precio()
 
         # El precio debe ser significativamente mayor que un sofá o cama individual
         # debido a la funcionalidad dual y mecanismo de conversión
 
         # Verificar que incluye sobrecosto por funcionalidad dual (50%)
         # y mecanismo de conversión (+100) y colchón (+300)
-
-        pass
+        assert precio == 2200.0
+        assert precio > self.sofacama.precio_base
     
     def test_capacidad_total(self):
         """Prueba las capacidades en ambos modos."""
 
         capacidades = self.sofacama.obtener_capacidad_total()
-        # TODO: Implementar test de capacidades
-        pass
+        assert capacidades["como_sofa"] == 3
+        assert capacidades["como_cama"] == 2
     
     def test_herencia_multiple_mro(self):
         """Prueba que la herencia múltiple funciona correctamente."""
@@ -249,7 +273,6 @@ class TestComedor:
     def test_agregar_silla(self):
         """Prueba agregar sillas al comedor."""
 
-        # TODO: Implementar test de agregación
         silla_nueva = Silla("Silla Nueva", "Madera", "Roble", 120.0, True)
 
         resultado = self.comedor.agregar_silla(silla_nueva)
@@ -259,46 +282,57 @@ class TestComedor:
     
     def test_agregar_objeto_invalido(self):
         """Prueba que no se pueden agregar objetos que no sean sillas."""
-        # TODO: Implementar test de validación de tipo
-        pass
+        resultado = self.comedor.agregar_silla(self.mesa)
+        assert "error" in resultado.lower()
+        assert len(self.comedor.sillas) == 2
     
     def test_quitar_silla(self):
         """Prueba quitar sillas del comedor."""
-        # TODO: Implementar test de remoción
-        pass
+        resultado = self.comedor.quitar_silla(0)
+        assert "removida" in resultado.lower()
+        assert len(self.comedor.sillas) == 1
     
     def test_calculo_precio_total(self):
         """Prueba el cálculo del precio total del comedor."""
-        # TODO: Implementar test de precio total
-        pass
+        precio_total = self.comedor.calcular_precio_total()
+        assert precio_total == 854.0
     
     def test_descuento_set_completo(self):
         """Prueba el descuento por set completo (4+ sillas)."""
 
-        # TODO: Implementar test de descuento
-
-        # Agregar más sillas para alcanzar el descuento
+    def test_descuento_set_completo(self):
+        """Prueba el descuento por set completo (4+ sillas)."""
 
         # Calcular precio sin descuento
+        precio_sin_descuento = self.comedor.calcular_precio_total()
+
+        # Agregar más sillas para alcanzar el descuento
+        self.comedor.agregar_silla(Silla("Silla 3", "Madera", "Roble", 120.0, True))
+        self.comedor.agregar_silla(Silla("Silla 4", "Madera", "Roble", 120.0, True))
 
         # Aplicar descuento del 5%
+        precio_con_descuento = self.comedor.calcular_precio_total()
+        precio_sin_aplicar = precio_sin_descuento + 2 * 132.0
 
-        pass
+        assert precio_con_descuento == round(precio_sin_aplicar * 0.95, 2)
     
     def test_descripcion_completa(self):
         """Prueba la generación de descripción completa."""
-        # TODO: Implementar test de descripción
-        pass
+        descripcion = self.comedor.obtener_descripcion_completa()
+        assert "COMEDOR FAMILIAR" in descripcion
+        assert "MESA" in descripcion
+        assert "SILLAS" in descripcion
     
     def test_resumen_estadistico(self):
         """Prueba la generación de resumen estadístico."""
-        # TODO: Implementar test de resumen
-        pass
+        resumen = self.comedor.obtener_resumen()
+        assert resumen["nombre"] == "Comedor Familiar"
+        assert resumen["total_muebles"] == 3
+        assert resumen["capacidad_personas"] == 2
     
     def test_len_comedor(self):
         """Prueba el método __len__ del comedor."""
-        # TODO: Implementar test de longitud
-        pass
+        assert len(self.comedor) == 3
 
 
 class TestConceptosOOPGenerales:
@@ -308,18 +342,30 @@ class TestConceptosOOPGenerales:
     
     def test_polimorfismo_general(self):
         """Prueba que diferentes tipos de muebles implementan polimorfismo correctamente."""
-        # TODO: Implementar test de polimorfismo general
-        pass
+        muebles = [
+            Silla("Silla P", "Madera", "Café", 100.0, True),
+            Mesa("Mesa P", "Madera", "Roble", 300.0, "rectangular", 4),
+        ]
+        for mueble in muebles:
+            assert isinstance(mueble, Mueble)
+            precio = mueble.calcular_precio()
+            assert isinstance(precio, (int, float))
+            assert precio > 0
     
     def test_encapsulacion_general(self):
         """Prueba que la encapsulación funciona correctamente."""
-        # TODO: Implementar test de encapsulación
-        pass
+        silla = Silla("Silla E", "Madera", "Café", 100.0, True)
+        assert hasattr(silla, "_nombre")
+        with pytest.raises(ValueError):
+            silla.nombre = ""
+        with pytest.raises(ValueError):
+            silla.precio_base = -50
     
     def test_herencia_jerarquia(self):
         """Prueba que la jerarquía de herencia funciona correctamente."""
-        # TODO: Implementar test de jerarquía
-        pass
+        silla = Silla("Silla H", "Madera", "Café", 100.0, True)
+        assert isinstance(silla, Asiento)
+        assert isinstance(silla, Mueble)
 
 
 # Agregar fixture para datos de prueba si es necesario
@@ -333,7 +379,6 @@ def muebles_de_prueba():
     }
 
 
-# TODO: Agregar tests de integración 
 class TestIntegracion:
     """
     Pruebas de integración que validan el funcionamiento conjunto de múltiples clases.
@@ -345,15 +390,23 @@ class TestIntegracion:
         from services.tienda import TiendaMuebles
         tienda = TiendaMuebles("Tienda Test")
 
-        # TODO: Implementar test de integración completo
-
         # Crear muebles variados
+        silla = Silla("Silla Integracion", "Madera", "Café", 100.0, True)
+        mesa = Mesa("Mesa Integracion", "Madera", "Roble", 300.0, "rectangular", 4)
+        sofacama = SofaCama("SofaCama Integracion", "Tela", "Gris", 800.0)
 
         # Agregar a la tienda
+        tienda.agregar_mueble(silla)
+        tienda.agregar_mueble(mesa)
+        tienda.agregar_mueble(sofacama)
 
         # Verificar búsquedas
+        assert tienda.total_muebles == 3
+        resultados = tienda.buscar_muebles_por_nombre("Integracion")
+        assert len(resultados) == 3
 
-        pass
+        estadisticas = tienda.obtener_estadisticas()
+        assert estadisticas["total_muebles"] == 3
 
 
 if __name__ == "__main__":
