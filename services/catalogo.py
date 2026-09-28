@@ -44,3 +44,12 @@ class Catalogo:
 
     def filtrar_por_tipo(self, tipo_clase: type) -> List[Mueble]:
         return [m for m in self._muebles if isinstance(m, tipo_clase)]
+
+    def ordenar_por_precio(self, descendente: bool = False) -> List[Mueble]:
+        def precio_seguro(mueble: Mueble) -> float:
+            try:
+                return mueble.calcular_precio()
+            except Exception:
+                return float("inf")
+
+        return sorted(self._muebles, key=precio_seguro, reverse=descendente)
