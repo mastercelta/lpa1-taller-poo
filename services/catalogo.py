@@ -13,3 +13,10 @@ class Catalogo:
 
     def __len__(self) -> int:
         return len(self._muebles)
+
+    def buscar_por_nombre(self, nombre: str) -> List[Mueble]:
+        if not nombre or not nombre.strip():
+            return []
+
+        nombre_lower = nombre.lower().strip()
+        return [m for m in self._muebles if nombre_lower in m.nombre.lower()]
