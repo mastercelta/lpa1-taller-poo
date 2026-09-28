@@ -3,11 +3,10 @@ Clase concreta Silla.
 Implementa un mueble de asiento específico para una persona.
 """
 
-# TODO: Importar la clase padre Asiento
-# from ..categorias.asientos import Asiento
+from ..categorias.asientos import Asiento
 
 
-class Silla:
+class Silla(Asiento):
     """
     Clase concreta que representa una silla.
     
@@ -31,22 +30,27 @@ class Silla:
             tiene_ruedas: Si la silla tiene ruedas
             Otros argumentos heredados de Asiento
         """
-        # TODO: Llamar al constructor padre con capacidad fija de 1 persona
-        
-        # TODO: Inicializar atributos específicos de la silla
-        
-        pass
+        super().__init__(nombre, material, color, precio_base,
+                          capacidad_personas=1, tiene_respaldo=tiene_respaldo,
+                          material_tapizado=material_tapizado)
+        self._altura_regulable = altura_regulable
+        self._tiene_ruedas = tiene_ruedas
     
-    # TODO: Implementar propiedades para los nuevos atributos
-    # @property
-    # def altura_regulable(self) -> bool:
-    #     """Getter para altura regulable."""
-    #     return self._altura_regulable
-    
-    # @altura_regulable.setter
-    # def altura_regulable(self, value: bool) -> None:
-    #     """Setter para altura regulable."""
-    #     self._altura_regulable = value
+    @property
+    def altura_regulable(self) -> bool:
+        return self._altura_regulable
+
+    @altura_regulable.setter
+    def altura_regulable(self, value: bool) -> None:
+        self._altura_regulable = value
+
+    @property
+    def tiene_ruedas(self) -> bool:
+        return self._tiene_ruedas
+
+    @tiene_ruedas.setter
+    def tiene_ruedas(self, value: bool) -> None:
+        self._tiene_ruedas = value
     
     def calcular_precio(self) -> float:
         """
@@ -55,17 +59,15 @@ class Silla:
         Returns:
             float: Precio final de la silla
         """
-        # TODO: Implementar cálculo de precio para silla
+        precio = self.precio_base
+        precio *= self.calcular_factor_comodidad()
 
-        # 1. Comenzar con el precio base
-        
-        # 2. Aplicar factor de comodidad heredado
-        
-        # 3. Agregar costos por características especiales
-        
-        # 4. Retornar precio redondeado a 2 decimales
+        if self.altura_regulable:
+            precio += 30.0
+        if self.tiene_ruedas:
+            precio += 20.0
 
-        pass
+        return round(precio, 2)
     
     def obtener_descripcion(self) -> str:
         """
@@ -74,9 +76,12 @@ class Silla:
         Returns:
             str: Descripción completa de la silla
         """
-        # TODO: Crear y retornar descripción detallada
-        
-        pass
+        descripcion = f"{self} - {self.obtener_info_asiento()}"
+        if self.altura_regulable:
+            descripcion += ", altura regulable"
+        if self.tiene_ruedas:
+            descripcion += ", con ruedas"
+        return descripcion
     
     def regular_altura(self, nueva_altura: int) -> str:
         """
@@ -89,9 +94,9 @@ class Silla:
         Returns:
             str: Mensaje del resultado de la operación
         """
-        # TODO: Implementar lógica de regulación
-
-        pass
+        if not self.altura_regulable:
+            return f"{self.nombre} no tiene altura regulable"
+        return f"{self.nombre} ajustada a {nueva_altura}cm"
     
     def es_silla_oficina(self) -> bool:
         """
@@ -100,7 +105,5 @@ class Silla:
         Returns:
             bool: True si es silla de oficina
         """
-        # TODO: Una silla es de oficina si tiene ruedas Y altura regulable
-
-        pass
+        return self.tiene_ruedas and self.altura_regulable
 
